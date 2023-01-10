@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2e072d48-cb2b-470c-b37a-988a7c5b3866",
+        "name": "Développeur Frontend"
+    },
+    {
+        "id": "8a9e992b-04ab-4fb1-8722-20fef468194f",
+        "name": "Développeur Backend"
+    },
+    {
+        "id": "a8d9b550-3db1-4b7d-84c5-788e73f85341",
+        "name": "Développeur Fullstack"
+    },
+    {
+        "id": "1325b75e-1c69-4df5-a88d-b1e4bf380d4c",
+        "name": "Graphiste"
+    },
+    {
+        "id": "77e1a3d1-6af0-4652-9439-d82c270f1ac8",
+        "name": "Administrateur Base de Données"
+    },
+    {
+        "id": "2027e226-acc8-4a9b-81b3-f076ab9c55ab",
+        "name": "Chef de Projet"
+    },
+    {
+        "id": "265a10ed-26ac-4dce-ba15-62a13c14dd0f",
+        "name": "Développeur mobile"
+    }
+]

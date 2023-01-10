@@ -1,0 +1,62 @@
+[
+    {
+        "id": "98ffa950-a53a-4b4d-b85e-ed41af855945",
+        "startDate": "01-12-2023",
+        "endDate": "01-03-2023",
+        "salary": 65000,
+        "name": "Projet-1: chef de projet et renfort dev",
+        "description": "Manager une équipe de dev sur le projet, faire du renfort de dev si nécéssaire",
+        "professionAwaited": "2027e226-acc8-4a9b-81b3-f076ab9c55ab",
+        "skillsAwaited": [
+            "2d48563b-1105-4736-bb8d-e3169d733927",
+            "1a689763-ca2d-4699-8178-caf87678aa68",
+            "0fde42e2-0a41-471d-8fea-e92d25497279",
+            "2fd1a54d-73c5-41ec-bd45-f377b9af7e3b"
+        ],
+        "pendingProposal": ["677363a4-3e9f-435f-aa80-565b92252dad"],
+        "acceptedProposals": [],
+        "status": ""
+    },
+    {
+        "id": "d1124cbe-1def-484c-802e-260cdf2d2397",
+        "startDate": "01-12-2023",
+        "endDate": "01-01-2023",
+        "salary": 16000,
+        "name": "Projet-1: backend",
+        "description": "s'occuper du développement backend",
+        "professionAwaited": "8a9e992b-04ab-4fb1-8722-20fef468194f",
+        "skillsAwaited": [
+            "1a689763-ca2d-4699-8178-caf87678aa68",
+            "f097d47d-25f6-4930-88f8-e9e66bb7a777"
+        ],
+        "pendingProposal": [],
+        "acceptedProposals": [],
+        "status": ""
+    },
+    {
+        "id": "18c7b5a4-964c-4439-b8f1-ee86d6db0501",
+        "startDate": "02-01-2023",
+        "endDate": "02-03-2023",
+        "salary": 14000,
+        "name": "Projet-1: frontend",
+        "description": "s'occuper du développement frontend",
+        "professionAwaited": "2e072d48-cb2b-470c-b37a-988a7c5b3866",
+        "skillsAwaited": [],
+        "pendingProposal": [],
+        "acceptedProposals": [],
+        "status": ""
+    },
+    {
+        "id": "d2dedda5-6f81-4feb-b5d9-251452eb9b4b",
+        "startDate": "01-02-2023",
+        "endDate": "01-04-2023",
+        "salary": 29000,
+        "name": "Projet-2: mobile app",
+        "description": "faire une application mobile sur le cours de la bourse",
+        "professionAwaited": "265a10ed-26ac-4dce-ba15-62a13c14dd0f",
+        "skillsAwaited": ["b0254f77-dbc7-4418-987e-a1b2b9dcab85"],
+        "pendingProposal": [],
+        "acceptedProposals": [],
+        "status": "Accepted"
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5aa0b1de-e327-4761-8e88-0c0858822e11",
+        "name": "Javascript Frontend"
+    },
+    {
+        "id": "56682531-cb8a-4e70-b615-ba241997c1a0",
+        "name": "Node Express"
+    },
+    {
+        "id": "428a0388-a112-49db-9b76-43882b4fb519",
+        "name": "React"
+    },
+    {
+        "id": "7eac33e9-e070-48ef-8123-4219a51f5b26",
+        "name": "VueJS"
+    },
+    {
+        "id": "35862d9c-374c-4be8-ae3e-249bc0548f16",
+        "name": "DevOps"
+    },
+    {
+        "id": "f097d47d-25f6-4930-88f8-e9e66bb7a777",
+        "name": "Python Fastapi"
+    },
+    {
+        "id": "2d48563b-1105-4736-bb8d-e3169d733927",
+        "name": "Developement Frontend"
+    },
+    {
+        "id": "1a689763-ca2d-4699-8178-caf87678aa68",
+        "name": "Developpement Backend"
+    },
+    {
+        "id": "f2aea714-432d-4753-ba8d-1ee665ebdc8b",
+        "name": "Kubernetes"
+    },
+    {
+        "id": "758e008c-f4f2-4d78-8de7-a5061f6f2a86",
+        "name": "Docker"
+    },
+    {
+        "id": "834abe54-6e3e-4f0b-9917-24f377e79e91",
+        "name": "Fini toujours dans les temps"
+    },
+    {
+        "id": "b0254f77-dbc7-4418-987e-a1b2b9dcab85",
+        "name": "Flutter"
+    },
+    {
+        "id": "0fde42e2-0a41-471d-8fea-e92d25497279",
+        "name": "Management d'équipe"
+    },
+    {
+        "id": "2fd1a54d-73c5-41ec-bd45-f377b9af7e3b",
+        "name": "Gestion de projet"
+    }
+]

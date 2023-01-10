@@ -1,0 +1,184 @@
+﻿Énoncé :
+
+
+Vous êtes en charge du développement d’ une API pour une application qui a pour but d’aider les entreprises qui sont à la recherche de freelances.
+
+
+L’entreprise peut effectuer des recherches de freelance selon plusieurs critères et leur proposer une mission.
+
+
+Prérequis  :
+
+
+        -> Utilisation d’une base de données : MongoDb, SQL etc…
+        -> Le framework backend JS de votre choix
+        -> Le code doit être versionné sur un repo github
+
+
+Fonctionnalités :
+
+
+
+
+        -> Toutes les fonctionnalités de l’application sont soumises à authentification (login) avec un JWT, exceptées la recherche et la consultation de freelance.
+
+
+        -> La création d’un compte doit déclencher l’envoi d’un mail à l’utilisateur et à l’administrateur (librairie au choix).
+
+
+        -> Un seul administrateur dans l’application
+
+
+        -> Seule l’entreprise peut créer une mission et la proposer à un freelance qui peut accepter ou décliner la proposition.
+
+
+        -> Si le freelance décline la mission, il est retirée automatiquement de la proposition. 
+
+
+        -> L’entreprise peut sélectionner maximum 3 freelances pour une mission.
+
+
+        -> Lorsque l’entreprise propose une mission à un freelance, celui ci doit être notifié par mail.
+
+
+        -> Lorsque le freelance accepte ou décline une proposition, l’entreprise doit être notifiée par mail.
+
+
+        -> Deux types de compte utilisateur sont à prévoir : 
+
+
+                - Freelance
+                - Entreprise
+
+
+        -> L’entreprise peut filtrer des freelances selon plusieurs critères:
+        
+* Le tarif / jour avec une valeur minimum et maximum
+* Métiers
+                - Compétences
+                - Le nombre d’années d’expérience avec une valeur minimum et maximum
+
+
+        -> Une barre de recherche permettra en fonction de la saisie d’une chaîne de caractère de rechercher un freelance sur les critères suivants :
+        - Nom
+        - Prénom
+        - Ville
+        - Métiers
+        - Compétences
+
+
+        Exemple : « Javascript Paris» : doit pouvoir ressortir les freelances basés à Paris qui ont la compétence « Javascript ». 
+(Le résultat des filtres doit faire ressortir les freelances qui marchent les critères).
+
+
+        -> Une compétence peut être rattachée à un ou plusieurs métiers. 
+
+
+        Exemple: la compétence « Javascript » peut être rattachée au métier « développeur frontend », « développeur fullstack », « développeur back end ».
+
+
+-> La mission est caractérisée par :
+
+
+        - Une date de début et de fin
+        - Un montant total
+        - Une description
+        - Un titre
+        - Un statut : clôturé, en cours
+        - un métier
+        - des compétences
+
+
+-> L’utilisateur doit pouvoir :
+
+
+        - Modifier les informations de sont profil
+        - Changer son mot de passe
+        - Réinitialiser son mot de passe en cas d’oublie
+
+
+-> L’entreprise doit pouvoir : 
+
+
+        - Supprimer sa mission
+        - Modifier sa mission
+        - Créer une mission
+
+
+-> L’admin doit pouvoir :
+
+
+        - Consulter/supprimer/modifier des utilisateurs
+        - Consulter/Créer/supprimer/modifier des compétences & des métiers
+        - Consulter les missions et la proposition rattachée à un freelance.
+
+
+Champs à prévoir:
+
+
+-> Les utilisateurs :
+
+
+        - Nom
+        - Prénom 
+        - Adresse
+        - Ville
+        - Code postal
+        - Téléphone
+        - Mail
+        - Mot de passe
+        - Admin
+
+
+-> Les freelances :
+                
+        - Taux journalier
+        - Année d’expérience
+        - Compétences
+        - Métiers
+        
+-> Les entreprises :
+
+
+        - Raison sociale (nom de l’entreprise)
+        - Statut société : SAS, SASU, SARL, EURL
+        - Numéro de siret (9 chiffres)
+        - Siège social (adresse, ville, code postal)
+
+
+-> Les missions :
+
+
+        - Une date de début et de fin
+        - Un montant total
+        - Une description
+        - Un titre
+        - un métier
+        - des compétences
+
+
+
+
+-> Les Compétences: 
+
+
+        - Nom
+
+
+-> Les Métiers
+
+
+        -> Nom
+                
+Rendu :
+
+
+* Sur un repos github
+* Dans un readme à la racine de votre projet, mettre votre nom & prénom 
+* M’inviter sur le repo : ynovzelab
+* À rendre pour le 3 février.
+Attention particulière :
+* Qualité du code (middlewares, helpers, validators etc…)
+* Projet structuré
+* Conception de l’application
+* Projet fonctionnel
