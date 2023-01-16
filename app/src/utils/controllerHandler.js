@@ -5,7 +5,7 @@ const controllerHandler = (controller) => async (req, res) => {
     } catch (error) {
         //return handleError(req, res, error);
         console.log(error);
-        return;
+        res.status(500).send(error);
     }
 };
 
