@@ -11,7 +11,8 @@ User :
  - PhoneNumber (string, must start with + and have only digits)
  - Email (string, must have email validation)
  - Password (string, must have password validation)
- - role (string, admin or user)
+ - isAdmin (bool)
+ - active (bool)
  - freelance: (object, got values or inexistant)
    - DailyTax (number)
    - ExperienceYears (number)
@@ -44,6 +45,7 @@ Skills:
 Professions:
  - ID (string, uuid)
  - Name (string)
+ - linkedSkills (array of ref to Skills)
 
 !! can only be an enum server side !!
 TaskStatus:

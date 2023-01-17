@@ -9,7 +9,7 @@
 - **MongoCompass** as local DB
 - **Postman** to test requests
 - **swagger** for doc (only if there is time) 
-- *emailing to define* nodemailer ?
+- **emailing** nodemailer
 
 ## Modélisation de la DB
 

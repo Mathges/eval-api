@@ -8,7 +8,8 @@
         "phoneNumber": "+33600000000",
         "email": "math.geslin@gmail.com",
         "password": "$2b$10$/.MF8YxgDj4CU022OBtROuWBw/rW7AwxY3wtstfNd20KsprVeYKqm",
-        "isAdmin": true
+        "isAdmin": true,
+        "active": true
     },
     {
         "id": "7e7074da-6f97-4a8c-a027-bfebfa8adc65",
@@ -20,6 +21,7 @@
         "email": "mathieu.geslin@ynov.com",
         "password": "$2b$10$.iSRxZiDb7xEpfsTaO86w.rkI9kZbr3IfJNkVkWJaBYEJev9bGhcu",
         "isAdmin": false,
+        "active": true,
         "freelance": {
             "dailyTax": 375,
             "experienceYears": 7,
@@ -43,6 +45,7 @@
         "email": "mathieu.geslin@tritons.io",
         "password": "$2b$10$/thD9aAzVBMS2AguXR.fB.EVK9qhMPZfHcWLA4mZY.f7zhVZSxtHK",
         "isAdmin": false,
+        "active": true,
         "company": {
             "socialReason": "EvilCorp",
             "status": "EURL",
@@ -60,6 +63,7 @@
         "email": "soulez.ferreol@tritons.io",
         "password": "$2b$10$uARzDcQcbwsvsyvPp5dGx.G7rGMBkNAbS1lCrLGkxeE3gR67mXAlu",
         "isAdmin": false,
+        "active": true,
         "freelance": {
             "dailyTax": 650,
             "experienceYears": 3,
@@ -88,6 +92,7 @@
         "email": "risitas.jeanne@hotmail.com",
         "password": "$2b$10$Sjx6Wo6J/04lNeKp8j1zi.NNAgSyjEhzimkleIdClOXUmFxy1Xc/O",
         "isAdmin": false,
+        "active": true,
         "freelance": {
             "dailyTax": 250,
             "experienceYears": 1,
@@ -108,6 +113,7 @@
         "email": "delarme.hughes@gmail.com",
         "password": "$2b$10$Ra26PaRDZ6Z4IWpsMMfJceSjyZmA14IiHxxoEUvvoTrTA0E8D8idC",
         "isAdmin": false,
+        "active": true,
         "freelance": {
             "dailyTax": 400,
             "experienceYears": 4,

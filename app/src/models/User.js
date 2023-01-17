@@ -1,4 +1,20 @@
 const mongoose = require('mongoose');
+const uuid4 = require('uuid4');
+
+const freelance = new mongoose.Schema({
+    dailyTax: Number,
+    experienceYears: Number,
+    professions: [String],
+    skills: [String],
+    currentTasks: [String]
+});
+
+const company = new mongoose.Schema({
+    socialReason: String,
+    status: String,
+    siret: String,
+    headOffice: String
+});
 
 const userSchema = mongoose.Schema({
     id: {
@@ -25,18 +41,11 @@ const userSchema = mongoose.Schema({
     zipCode: {
         type: String,
         required: true,
-        // TODO: put in joi when register
-        validate: function(value) {
-            return /\b\d{5}\b/g.test(value);
-        }
     },
     phoneNumber: {
         type: String,
         required: true,
-        // TODO: put in joi when register
-        validate: function(value) {
-            return /^((\+)33|0|0033)[1-9](\d{2}){4}$/g.test(value);
-        }
+        unique: true,
     },
     email: {
         type: String,
@@ -48,15 +57,40 @@ const userSchema = mongoose.Schema({
         required: true,
         // maxLength 60 because bcrypt return hashes of 60 chars
         maxLength: 60,
-        // TODO: put in joi when register
-        validate: function(value) {
-            return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/g.test(value);
-        }
     },
     isAdmin: {
         type: Boolean,
         required: true
     },
+    active: {
+        type: Boolean,
+        required: true
+    },
+    freelance: {
+        type: freelance,
+        default: null,
+    },
+    company: {
+        type: company,
+        default: null,
+    }
 });
+
+// setting id and default values
+userSchema.pre('validate', function(next) {
+    if(!this.id) {
+        this.id = uuid4()
+    }
+
+    if(!this.isAdmin) {
+        this.isAdmin = false
+    }
+
+    if(!this.active) {
+        this.active = false
+    }
+    next()
+});
+
 
 module.exports = mongoose.model('User', userSchema, 'users');

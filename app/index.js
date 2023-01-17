@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dbConnection =  require('./database');
 const router = require('./src/routers');
-const sendEmail = require('./src/services/nodemailer');
 require('dotenv').config();
 
 const app = express();
+
+app.set("view engine", "ejs");
 
 dbConnection();
 
