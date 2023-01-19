@@ -12,6 +12,7 @@ User :
  - Email (string, must have email validation)
  - Password (string, must have password validation)
  - isAdmin (bool)
+ - confirmation_token (string)
  - active (bool)
  - freelance: (object, got values or inexistant)
    - DailyTax (number)

@@ -7,8 +7,8 @@ const sendEmail = async (content, template) => {
         port: 465,
         secure: true,
         auth: {
-            user: process.env.MAIL_ADDRESS,
-            pass: process.env.MAIL_TOKEN,
+            user: process.env.EMAIL_ADDRESS,
+            pass: process.env.EMAIL_TOKEN,
         },
         // need this because self generated certificate
         tls : { rejectUnauthorized: false }

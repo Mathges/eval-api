@@ -19,7 +19,6 @@ const company = new mongoose.Schema({
 const userSchema = mongoose.Schema({
     id: {
         type: String,
-        required: true,
         maxLength: 36
     },
     lastName: {
@@ -60,11 +59,12 @@ const userSchema = mongoose.Schema({
     },
     isAdmin: {
         type: Boolean,
-        required: true
+    },
+    confirmation_token: {
+        type: String,
     },
     active: {
         type: Boolean,
-        required: true
     },
     freelance: {
         type: freelance,
@@ -77,7 +77,7 @@ const userSchema = mongoose.Schema({
 });
 
 // setting id and default values
-userSchema.pre('validate', function(next) {
+userSchema.pre('save', function(next) {
     if(!this.id) {
         this.id = uuid4()
     }

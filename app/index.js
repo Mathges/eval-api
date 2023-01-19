@@ -15,5 +15,5 @@ app.use(bodyParser.json());
 app.use(router);
 
 app.listen(process.env.PORT, async() => {
-  console.log(`App listening on http://localhost:${process.env.PORT}`);
+  console.log(`App listening on ${process.env.BASE_URL}`);
 });

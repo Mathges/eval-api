@@ -7,5 +7,6 @@ const UserInRegister = require('../utils/validation/schemas/UserInRegister');
 const userRouter = new Router();
 
 userRouter.post('/register', bodyValidation(UserInRegister), controllerHandler(userController.register));
+userRouter.get('/validate-account/:token', controllerHandler(userController.validateAccount));
 
 module.exports = userRouter;
