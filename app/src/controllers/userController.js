@@ -44,7 +44,7 @@ const userController = {
         await user.save();
 
         res.status(200).send({"message": "Account has been successfully validated"});
-    }
+    },
 };
 
 module.exports = userController;
