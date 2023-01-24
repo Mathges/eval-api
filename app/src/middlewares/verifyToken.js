@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const verifyToken = (req, res, next) => {
     if(!req.header("Authorization")) {
-        res.status(401).send({"message": "Unauthorized"})
+        return res.status(401).send({"message": "Unauthorized"})
     }
 
     const token = req.header("Authorization").slice(7);
@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
     try {
         jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
-        res.status(401).send({"message": "Unauthorized"})
+        return res.status(401).send({"message": "Unauthorized"})
     }
 
     next();

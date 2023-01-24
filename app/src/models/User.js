@@ -73,6 +73,14 @@ const userSchema = mongoose.Schema({
     company: {
         type: company,
         default: null,
+    },
+    profession: {
+        //TODO: put ref to Profession id
+        type: String,
+    },
+    skills: {
+        //TODO: put ref to Skill ids
+        type: [String]
     }
 });
 

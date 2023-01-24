@@ -23,7 +23,7 @@ const userController = {
             validation_link: `${process.env.BASE_URL}user/validate-account/${confirmation_token}`
         })
 
-        await sendEmail(emailInfos, template);
+        sendEmail(emailInfos, template);
 
         //send email
         res.status(201).send({"message": "Confirmation email has been sent to the indicated address"});

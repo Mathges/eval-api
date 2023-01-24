@@ -35,8 +35,8 @@ Tasks:
  - Description (string)
  - ProfessionAwaited (ref to Profession)
  - SkillsAwaited (ref to Skill)
- - PendingProposals (array of ref to Freelance)
- - AcceptedProposals (array of ref to Freelance, maximum 3)
+ - PendingProposals (array of ref to Freelance, maximum 3)
+ - AcceptedProposals (string, ref to Freelance)
  - Status (ref to TaskStatus, only 1 at a time)
 
 Skills:
