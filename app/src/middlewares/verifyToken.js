@@ -8,12 +8,11 @@ const verifyToken = (req, res, next) => {
     const token = req.header("Authorization").slice(7);
 
     try {
-        jwt.verify(token, process.env.JWT_SECRET);
+        jwt.verify(token, process.env.JWT_SECRET);        
+        next();
     } catch (error) {
         return res.status(401).send({"message": "Unauthorized"})
     }
-
-    next();
     
 };
 

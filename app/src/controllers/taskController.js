@@ -9,6 +9,11 @@ const taskController = {
     create: async (req, res) => {
         const task = new Task(req.body);
 
+        const decodedToken = await decodeToken(req.header("Authorization").slice(7));
+        const taskCreator = await User.findOne({id: decodedToken.id});
+
+        task.contact = taskCreator.email;
+
         await task.save();
 
         res.status(201).send({"message": "Task created"});
@@ -55,7 +60,55 @@ const taskController = {
         sendEmail(emailInfos, template);
 
         res.status(200).send({"message": "Proposal sent to user"});
-    }
+    },
+
+    handleProposalResponse: async (req, res) => {
+        // the body should have a taskId and an answer type (accepted or declined)
+        const token = await decodeToken(req.header("Authorization").slice(7));
+        const user = await User.findOne({id: token.id});
+        const task = await Task.findOne({id: req.body.taskId});
+        const { answer } = req.body;
+
+        const userOid = user._id.toString();
+
+        if(!(task.pendingProposals.includes(userOid))) {
+            return res.status(422).send({"message": "User not in proposal list"})
+        };
+
+        let emailInfos = {
+            to: task.contact,
+            subject: ""
+        };
+        let responseMessage = "";
+
+        if(answer === "declined") {
+            const newProposalList = task.pendingProposals.filter(id => id.toString() !== userOid);
+            task.pendingProposals = newProposalList;
+            emailInfos.subject = `Proposal ${task.name} has been declined`
+            responseMessage = "Proposal declined"
+        }
+
+        if(answer === "accepted") {
+            task.pendingProposals = []
+            task.acceptedProposal = user._id;
+            task.status = "ACCEPTED";
+            emailInfos.subject = `Proposal ${task.name} has been accepted`;
+            responseMessage = "Proposal accepted"
+        }
+
+        const template = await ejs.renderFile(path.resolve(__dirname, '../services/email/templates/proposalResponse.ejs'), {
+            username: `${user.firstName} ${user.lastName}`,
+            answer: `${answer}`,
+            taskname: `${task.name}`
+        });
+        
+        sendEmail(emailInfos, template);
+
+        await task.save();
+
+        return res.status(200).send({"message": responseMessage});
+    },
+
 }
 
 module.exports = taskController;

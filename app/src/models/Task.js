@@ -41,7 +41,7 @@ const taskSchema = new mongoose.Schema({
     },
     pendingProposals: {
         type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-        //validate: [arrayLimit, '{PATH} exceeds the limit of 3'],
+        validate: [arrayLimit, '{PATH} exceeds the limit of 3'],
         default: null
     },
     acceptedProposal: {
@@ -53,6 +53,9 @@ const taskSchema = new mongoose.Schema({
         enum: ['ACCEPTED', 'PENDING PROPOSALS', 'PUBLISHED', 'NOT PUBLISHED'],
         default: 'NOT PUBLISHED'
     },
+    contact: {
+        type: String,
+    }
 });
 
 taskSchema.pre('save', function(next) {

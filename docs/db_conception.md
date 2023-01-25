@@ -38,6 +38,7 @@ Tasks:
  - PendingProposals (array of ref to Freelance, maximum 3)
  - AcceptedProposals (string, ref to Freelance)
  - Status (ref to TaskStatus, only 1 at a time)
+ - Contact (string, email of task creator)
 
 Skills:
  - ID (string, uuid)

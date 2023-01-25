@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const sendEmail = require('../services/email/nodemailer');
+const hash = require('../utils/bcrypt/hash');
 const ejs = require('ejs');
 const path = require('path');
 const uuid4 = require('uuid4');
@@ -7,8 +8,12 @@ const uuid4 = require('uuid4');
 const userController = {
     register: async (req, res) => {
         const user = new User(req.body);
+
         const confirmation_token = uuid4();
         user.confirmation_token = confirmation_token;
+
+        const hashed = await hash(user.password);
+        user.password = hashed
         await user.save();
 
         // make an email with correct infos
