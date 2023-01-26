@@ -34,13 +34,13 @@ const taskController = {
         }
 
         // checking user existence in current proposals
-        const userExists = task.pendingProposals.map(String).includes(user._id.toString());
+        const userExists = task.pendingProposals.map(String).includes(user.id);
 
         if(userExists) {
             return res.status(422).send({"message" : "Task have already been proposed to this user"})
         }
 
-        task.pendingProposals.push(user._id);
+        task.pendingProposals.push(user.id);
         task.status = 'PENDING PROPOSALS';
         await task.save();
 
@@ -69,9 +69,7 @@ const taskController = {
         const task = await Task.findOne({id: req.body.taskId});
         const { answer } = req.body;
 
-        const userOid = user._id.toString();
-
-        if(!(task.pendingProposals.includes(userOid))) {
+        if(!(task.pendingProposals.includes(user.id))) {
             return res.status(422).send({"message": "User not in proposal list"})
         };
 
@@ -82,7 +80,7 @@ const taskController = {
         let responseMessage = "";
 
         if(answer === "declined") {
-            const newProposalList = task.pendingProposals.filter(id => id.toString() !== userOid);
+            const newProposalList = task.pendingProposals.filter(id => id !== user.id);
             task.pendingProposals = newProposalList;
             emailInfos.subject = `Proposal ${task.name} has been declined`
             responseMessage = "Proposal declined"
@@ -90,7 +88,7 @@ const taskController = {
 
         if(answer === "accepted") {
             task.pendingProposals = []
-            task.acceptedProposal = user._id;
+            task.acceptedProposal = user.id;
             task.status = "ACCEPTED";
             emailInfos.subject = `Proposal ${task.name} has been accepted`;
             responseMessage = "Proposal accepted"
@@ -108,6 +106,11 @@ const taskController = {
 
         return res.status(200).send({"message": responseMessage});
     },
+    getOne: async (req, res) => {
+        const task = await Task.findOne({id: req.body.id}).populate('pending');
+
+        res.status(200).send(task);
+    }
 
 }
 

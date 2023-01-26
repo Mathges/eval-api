@@ -7,6 +7,7 @@ User :
  - LastName (string)
  - FirstName (string)
  - Adress (string)
+ TODO: integrate city
  - ZipCode (string, must have 5 digits validation)
  - PhoneNumber (string, must start with + and have only digits)
  - Email (string, must have email validation)

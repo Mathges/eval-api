@@ -3,7 +3,7 @@ const uuid4 = require('uuid4');
 
 function arrayLimit(val) {
     return val.length <= 3;
-  }
+}
 
 const taskSchema = new mongoose.Schema({
     id: {
@@ -40,22 +40,37 @@ const taskSchema = new mongoose.Schema({
         type: [String],
     },
     pendingProposals: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+        type: [String],
         validate: [arrayLimit, '{PATH} exceeds the limit of 3'],
         default: null
     },
     acceptedProposal: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'User'
     },
     status: {
         type: String,
-        enum: ['ACCEPTED', 'PENDING PROPOSALS', 'PUBLISHED', 'NOT PUBLISHED'],
+        enum: ['FINISHED', 'ACCEPTED', 'PENDING PROPOSALS', 'PUBLISHED', 'NOT PUBLISHED'],
         default: 'NOT PUBLISHED'
     },
     contact: {
         type: String,
     }
+}, {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+});
+
+taskSchema.virtual('pendingUsers', {
+    ref: 'User',
+    localField: 'pendingProposals',
+    foreignField: 'id',
+});
+
+taskSchema.virtual('acceptedBy', {
+    ref: 'User',
+    localField: 'acceptedProposal',
+    foreignField: 'id',
 });
 
 taskSchema.pre('save', function(next) {
