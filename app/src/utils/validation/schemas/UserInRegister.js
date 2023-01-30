@@ -4,6 +4,7 @@ const UserInRegister = Joi.object({
     lastName: Joi.string().required(),
     firstName: Joi.string().required(),
     address: Joi.string().required(),
+    city: Joi.string().required(),
     zipCode: Joi
         .string()
         .required()

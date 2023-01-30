@@ -34,6 +34,7 @@ const userController = {
         res.status(201).send({"message": "Confirmation email has been sent to the indicated address"});
         
     },
+
     validateAccount: async (req, res) => {
         const token = req.params.token;
         
@@ -49,6 +50,45 @@ const userController = {
         await user.save();
 
         res.status(200).send({"message": "Account has been successfully validated"});
+    },
+
+    filter: async (req, res) => {
+        const {firstName, lastName, city, professions, minTax, maxTax} = req.query;
+
+        const filterConditions = {};
+
+        if (firstName) {
+            filterConditions.firstName = { $regex: firstName, $options: "i" }
+        }
+        if (lastName) {
+            filterConditions.lastName = { $regex: lastName, $options: "i" }
+        }
+        if (city) {
+            filterConditions.city = { $regex: city, $options: "i" }
+        }
+        if (professions) {
+            filterConditions['freelance.professions'] = professions
+        }
+
+        if(minTax && maxTax) {
+            filterConditions['freelance.dailyTax'] = {$gte: minTax, $lte: maxTax}
+        }
+
+        if(minTax && !maxTax) {
+            filterConditions['freelance.dailyTax'] = {$gte: minTax}
+        }
+
+        if(maxTax && !minTax) {
+            filterConditions['freelance.dailyTax'] = {$lte: maxTax}
+        }
+
+        const response = await User.find(filterConditions);
+        
+        if(response.length === 0) {
+            return res.status(200).send({"message": "No users were found"})
+        }
+
+        res.status(200).send(response);
     },
 };
 

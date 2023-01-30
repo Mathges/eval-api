@@ -37,6 +37,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    city: {
+        type: String,
+        required: true
+    },
     zipCode: {
         type: String,
         required: true,
@@ -74,14 +78,6 @@ const userSchema = mongoose.Schema({
         type: company,
         default: null,
     },
-    profession: {
-        //TODO: put ref to Profession id
-        type: String,
-    },
-    skills: {
-        //TODO: put ref to Skill ids
-        type: [String]
-    }
 });
 
 // setting id and default values
@@ -99,6 +95,5 @@ userSchema.pre('save', function(next) {
     }
     next()
 });
-
 
 module.exports = mongoose.model('User', userSchema, 'users');
