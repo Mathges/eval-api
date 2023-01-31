@@ -4,13 +4,13 @@ const ejs = require("ejs");
 const path = require("path");
 const sendEmail = require("../services/email/nodemailer");
 const decodeToken = require("../utils/jwt/decodeToken");
+const getUserFromToken = require("../utils/getUserFromToken");
 
 const taskController = {
     create: async (req, res) => {
         const task = new Task(req.body);
 
-        const decodedToken = await decodeToken(req.header("Authorization").slice(7));
-        const taskCreator = await User.findOne({id: decodedToken.id});
+        const taskCreator = await getUserFromToken(req.header("Authorization").slice(7));
 
         task.contact = taskCreator.email;
 
@@ -63,9 +63,7 @@ const taskController = {
     },
 
     handleProposalResponse: async (req, res) => {
-        // the body should have a taskId and an answer type (accepted or declined)
-        const token = await decodeToken(req.header("Authorization").slice(7));
-        const user = await User.findOne({id: token.id});
+        const user = await getUserFromToken(req.header("Authorization").slice(7));
         const task = await Task.findOne({id: req.body.taskId});
         const { answer } = req.body;
 
@@ -107,7 +105,7 @@ const taskController = {
         return res.status(200).send({"message": responseMessage});
     },
     getOne: async (req, res) => {
-        const task = await Task.findOne({id: req.body.id}).populate('pending');
+        const task = await Task.findOne({id: req.body.id}).populate('pendingUsers').populate('professionDetails');
 
         res.status(200).send(task);
     }

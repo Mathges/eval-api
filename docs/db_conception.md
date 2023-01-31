@@ -54,3 +54,4 @@ Professions:
 TaskStatus:
  - ID (string, uuid)
  - Name (string, validation with enum)
+ 

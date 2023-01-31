@@ -9,6 +9,12 @@ const freelance = new mongoose.Schema({
     currentTasks: [String]
 });
 
+freelance.virtual('professionDetails', {
+    ref: 'Profession',
+    localField: 'professions',
+    foreignField: 'id',
+});
+
 const company = new mongoose.Schema({
     socialReason: String,
     status: String,

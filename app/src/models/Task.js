@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const uuid4 = require('uuid4');
+const Profession = require('./Profession');
 
 function arrayLimit(val) {
     return val.length <= 3;
@@ -32,11 +33,10 @@ const taskSchema = new mongoose.Schema({
         required: true
     },
     professionAwaited: {
-        //TODO: change by profession type later
         type: String,
+        ref: 'Profession'
     },
     skillsAwaited: {
-        //TODO: change by skills type
         type: [String],
     },
     pendingProposals: {
@@ -70,6 +70,18 @@ taskSchema.virtual('pendingUsers', {
 taskSchema.virtual('acceptedBy', {
     ref: 'User',
     localField: 'acceptedProposal',
+    foreignField: 'id',
+});
+
+taskSchema.virtual('professionDetails', {
+    ref: 'Profession',
+    localField: 'professionAwaited',
+    foreignField: 'id',
+});
+
+taskSchema.virtual('skillName', {
+    ref: 'Skill',
+    localField: 'skillAwaited',
     foreignField: 'id',
 });
 

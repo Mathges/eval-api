@@ -4,6 +4,8 @@ const hash = require('../utils/bcrypt/hash');
 const ejs = require('ejs');
 const path = require('path');
 const uuid4 = require('uuid4');
+const decodeToken = require('../utils/jwt/decodeToken');
+const getUserFromToken = require('../utils/getUserFromToken');
 
 const userController = {
     register: async (req, res) => {
@@ -90,6 +92,14 @@ const userController = {
 
         res.status(200).send(response);
     },
+    getMe: async (req, res) => {
+        const user = await getUserFromToken(req.header("Authorization").slice(7));
+
+        return res.status(200).send(user);
+    },
+    update: async (req,res) => {
+        
+    }
 };
 
 module.exports = userController;

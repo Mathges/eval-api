@@ -10,8 +10,8 @@ const userRouter = new Router();
 
 userRouter.post('/register', bodyValidation(UserInRegister), controllerHandler(userController.register));
 userRouter.get('/validate-account/:token', controllerHandler(userController.validateAccount));
-// TODO: transform in /me route
-// userRouter.get('/:id', controllerHandler(userController.getById));
-userRouter.get('/filter', verifyToken, isCompany, userController.filter);
+userRouter.get('/filter', verifyToken, isCompany, controllerHandler(userController.filter));
+userRouter.get('/me', verifyToken, controllerHandler(userController.getMe));
+userRouter.patch('/update', verifyToken, controllerHandler(userController.update))
 
 module.exports = userRouter;
