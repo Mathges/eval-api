@@ -1,12 +1,7 @@
 const User = require("../models/User");
-const decodeToken = require("../utils/jwt/decodeToken")
 
 const isCompany = async (req, res, next) => {
-    // decode token
-    const token = await decodeToken(req.header("Authorization").slice(7));
-    
-    // get user by id
-    const user = await User.findOne({id: token.id});
+    const user = await getUserFromToken(req.header("Authorization").slice(7));
 
     // check company field presence
     if(!user.company) {

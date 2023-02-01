@@ -33,8 +33,7 @@ const userController = {
         sendEmail(emailInfos, template);
 
         //send email
-        res.status(201).send({"message": "Confirmation email has been sent to the indicated address"});
-        
+        res.status(201).send({"message": "Confirmation email has been sent to the indicated address"});       
     },
 
     validateAccount: async (req, res) => {
@@ -92,13 +91,21 @@ const userController = {
 
         res.status(200).send(response);
     },
+
     getMe: async (req, res) => {
         const user = await getUserFromToken(req.header("Authorization").slice(7));
 
         return res.status(200).send(user);
     },
-    update: async (req,res) => {
-        
+
+    updateFreelance: async (req,res) => {
+        const user = await getUserFromToken(req.header("Authorization").slice(7));
+
+        const update = await User.findOneAndUpdate({id: user.id}, req.body, {
+            new: true
+        });
+
+        res.status(200).send(update);
     }
 };
 
