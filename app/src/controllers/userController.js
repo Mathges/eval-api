@@ -4,7 +4,6 @@ const hash = require('../utils/bcrypt/hash');
 const ejs = require('ejs');
 const path = require('path');
 const uuid4 = require('uuid4');
-const decodeToken = require('../utils/jwt/decodeToken');
 const getUserFromToken = require('../utils/getUserFromToken');
 
 const userController = {
@@ -99,6 +98,15 @@ const userController = {
     },
 
     updateFreelance: async (req,res) => {
+        const user = await getUserFromToken(req.header("Authorization").slice(7));
+
+        const update = await User.findOneAndUpdate({id: user.id}, req.body, {
+            new: true
+        });
+
+        res.status(200).send(update);
+    },
+    updateCompany: async (req,res) => {
         const user = await getUserFromToken(req.header("Authorization").slice(7));
 
         const update = await User.findOneAndUpdate({id: user.id}, req.body, {

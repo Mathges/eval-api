@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const getUserFromToken = require("../utils/getUserFromToken");
 
 const isCompany = async (req, res, next) => {
     const user = await getUserFromToken(req.header("Authorization").slice(7));
