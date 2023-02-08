@@ -17,5 +17,6 @@ userRouter.get('/filter', verifyToken, isCompany, controllerHandler(userControll
 userRouter.get('/me', verifyToken, controllerHandler(userController.getMe));
 userRouter.patch('/update-freelance', verifyToken, isFreelance, bodyValidation(FreelanceInUpdate), controllerHandler(userController.updateFreelance));
 userRouter.patch('/update-company', verifyToken, isCompany, bodyValidation(CompanyInUpdate), controllerHandler(userController.updateCompany));
-
+userRouter.get('/ask-reset-password', controllerHandler(userController.askResetPassword));
+userRouter.patch('/reset-password', controllerHandler(userController.resetPassword));
 module.exports = userRouter;

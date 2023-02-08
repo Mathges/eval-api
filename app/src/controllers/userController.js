@@ -5,6 +5,7 @@ const ejs = require('ejs');
 const path = require('path');
 const uuid4 = require('uuid4');
 const getUserFromToken = require('../utils/getUserFromToken');
+const ResetPassword = require('../models/ResetPassword');
 
 const userController = {
     register: async (req, res) => {
@@ -106,6 +107,7 @@ const userController = {
 
         res.status(200).send(update);
     },
+
     updateCompany: async (req,res) => {
         const user = await getUserFromToken(req.header("Authorization").slice(7));
 
@@ -114,6 +116,55 @@ const userController = {
         });
 
         res.status(200).send(update);
+    },
+
+    askResetPassword: async (req, res) => {
+
+        const token = uuid4();
+
+        const resetPasswordBody = {
+            email: req.body.email,
+            token,
+            date: Date.now()
+             
+        }
+
+        const resetPassword = new ResetPassword(resetPasswordBody);
+        await resetPassword.save();
+
+        const emailInfos = {
+            to: req.body.email,
+            subject: "reset password"
+        }
+        
+        const template = await ejs.renderFile(path.resolve(__dirname, '../services/email/templates/resetPassword.ejs'), {
+            // redirect to front form later, for now call api route directly
+            link: `${process.env.BASE_URL}/user/reset-password/${token}`
+        });
+
+        sendEmail(emailInfos, template);
+
+        res.status(200).send()
+
+    },
+
+    resetPassword: async (req, res) => {
+        const resetPassword = await ResetPassword.find({token: req.body.token});
+
+        // timestamp must be less than 15min
+        const resetPasswordTime = new Date(resetPassword[0].date);
+        const currentTime = new Date(Date.now());
+
+        const timeDiff = (currentTime - resetPasswordTime)/1000/60;
+
+        if(timeDiff > 15) {
+            return res.status(422).send({"message": "Time exceeds limit, please resend a demand"})
+        }
+
+        const password = await hash(req.body.password);
+        await User.findOneAndUpdate({email: resetPassword[0].email}, {password: password});
+
+        res.status(200).send()
     }
 };
 
