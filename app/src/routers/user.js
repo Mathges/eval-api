@@ -8,6 +8,8 @@ const FreelanceInUpdate = require('../utils/validation/schemas/FreelanceInUpdate
 const verifyToken = require('../middlewares/verifyToken');
 const isCompany = require('../middlewares/isCompany');
 const isFreelance = require('../middlewares/isFreelance');
+const ResetPassword = require('../utils/validation/schemas/ResetPassword');
+const AskResetPassword = require('../utils/validation/schemas/AskResetPassword');
 
 const userRouter = new Router();
 
@@ -17,6 +19,7 @@ userRouter.get('/filter', verifyToken, isCompany, controllerHandler(userControll
 userRouter.get('/me', verifyToken, controllerHandler(userController.getMe));
 userRouter.patch('/update-freelance', verifyToken, isFreelance, bodyValidation(FreelanceInUpdate), controllerHandler(userController.updateFreelance));
 userRouter.patch('/update-company', verifyToken, isCompany, bodyValidation(CompanyInUpdate), controllerHandler(userController.updateCompany));
-userRouter.get('/ask-reset-password', controllerHandler(userController.askResetPassword));
-userRouter.patch('/reset-password', controllerHandler(userController.resetPassword));
+userRouter.get('/ask-reset-password', bodyValidation(AskResetPassword), controllerHandler(userController.askResetPassword));
+userRouter.patch('/reset-password', bodyValidation(ResetPassword), controllerHandler(userController.resetPassword));
+
 module.exports = userRouter;

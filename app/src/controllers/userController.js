@@ -164,7 +164,7 @@ const userController = {
         const password = await hash(req.body.password);
         await User.findOneAndUpdate({email: resetPassword[0].email}, {password: password});
 
-        res.status(200).send()
+        res.status(200).send({"message": "Password changed"})
     }
 };
 
