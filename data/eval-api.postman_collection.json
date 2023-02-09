@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "36e4b50d-a005-4a9b-a210-78022379d356",
+		"name": "eval-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Access token is returned\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"token\")\r",
+									"    console.log(pm.response.json().token)\r",
+									"    pm.collectionVariables.set(\"jwtToken\", pm.response.json().token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authoriza",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/refresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Access token is returned\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"token\")\r",
+									"    console.log(pm.response.json().token)\r",
+									"    pm.collectionVariables.set(\"jwtToken\", pm.response.json().token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mathieu.geslin@ynov.com\",\r\n    \"password\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastName\": \"Duteil\",\r\n    \"firstName\": \"Yves\",\r\n    \"address\": \"1, boulevard du sel marin\",\r\n    \"zipCode\": \"44444\",\r\n    \"phoneNumber\": \"0909090909\",\r\n    \"email\": \"mathieu.geslin@tritons.io\",\r\n    \"password\": \"Test1234!\",\r\n    \"freelance\": {\r\n        \"dailyTax\": 500,\r\n        \"experienceYears\": 1,\r\n        \"professions\": [\"265a10ed-26ac-4dce-ba15-62a13c14dd0f\"],\r\n        \"skills\": [\"b0254f77-dbc7-4418-987e-a1b2b9dcab85\", \"1c39fa86-f7ae-4b30-8dd1-dc0578b8d92a\"]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateAccount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/validate-account/06fa8d67-8e75-4ef0-aeb9-ea3e5a461706",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"validate-account",
+								"06fa8d67-8e75-4ef0-aeb9-ea3e5a461706"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/filter?firstName=Jeanne&city=Paris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Jeanne"
+								},
+								{
+									"key": "lastName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Paris"
+								},
+								{
+									"key": "professions",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "minTax",
+									"value": "240",
+									"disabled": true
+								},
+								{
+									"key": "maxTax",
+									"value": "200",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFreelance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"Paris\",\r\n    \"company\": {\r\n        \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/update-freelance",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"update-freelance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCompany",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"Marseille bébé\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/update-company",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"update-company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "askResetPassword",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mathieu.geslin@ynov.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/ask-reset-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"ask-reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"96c1f453-6124-4246-9551-7cd62affe734\",\r\n    \"password\": \"Test1234!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/reset-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2023-03-22\",\r\n    \"endDate\": \"2023-03-24\",\r\n    \"salary\": 50000,\r\n    \"name\": \"Looking for dev mobile\",\r\n    \"description\": \"new app blablabla, and then blablabla, to blablabla\",\r\n    \"professionAwaited\": \"265a10ed-26ac-4dce-ba15-62a13c14dd0f\",\r\n    \"skillsAwaited\": [\"b0254f77-dbc7-4418-987e-a1b2b9dcab85\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addProposal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taskId\": \"29913a9b-03b9-4fdc-b4c7-a15dd65c48cf\",\r\n    \"userId\": \"359e2a26-b1c6-42d3-a5a7-86e3dfd7d7e1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task/add-proposal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"add-proposal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "handleUserResponse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taskId\": \"29913a9b-03b9-4fdc-b4c7-a15dd65c48cf\",\r\n    \"answer\": \"accepted\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task/handle-proposal-response",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"handle-proposal-response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"29913a9b-03b9-4fdc-b4c7-a15dd65c48cf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3002",
+			"type": "default"
+		},
+		{
+			"key": "{{jwtToken}}",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "jwtToken",
+			"value": ""
+		}
+	]
+}
