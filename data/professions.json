@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2e072d48-cb2b-470c-b37a-988a7c5b3866",
+        "name": "Développeur Frontend",
+        "linkedSkills": [
+            "5aa0b1de-e327-4761-8e88-0c0858822e11",
+            "428a0388-a112-49db-9b76-43882b4fb519",
+            "7eac33e9-e070-48ef-8123-4219a51f5b26"
+        ]
+    },
+    {
+        "id": "8a9e992b-04ab-4fb1-8722-20fef468194f",
+        "name": "Développeur Backend",
+        "linkedSkills": [
+            "56682531-cb8a-4e70-b615-ba241997c1a0",
+            "f097d47d-25f6-4930-88f8-e9e66bb7a777"
+        ]
+    },
+    {
+        "id": "3ddcafbe-d00c-4c0d-ac6b-298d1f8f4e7a",
+        "name": "DevOps",
+        "linkedSkills": [
+            "f2aea714-432d-4753-ba8d-1ee665ebdc8b",
+            "758e008c-f4f2-4d78-8de7-a5061f6f2a86"
+        ]
+    },
+    {
+        "id": "2027e226-acc8-4a9b-81b3-f076ab9c55ab",
+        "name": "Chef de Projet",
+        "linkedSkills": [
+            "0fde42e2-0a41-471d-8fea-e92d25497279",
+            "2fd1a54d-73c5-41ec-bd45-f377b9af7e3b",
+            "fe97a50f-397f-4205-9ba6-707d3c3c13cb"
+        ]
+    },
+    {
+        "id": "265a10ed-26ac-4dce-ba15-62a13c14dd0f",
+        "name": "Développeur mobile",
+        "linkedSkills": [
+            "b0254f77-dbc7-4418-987e-a1b2b9dcab85",
+            "1c39fa86-f7ae-4b30-8dd1-dc0578b8d92a"
+        ]
+    }
+]

@@ -1,0 +1,129 @@
+[
+    {
+        "id": "1bfa554f-ef9f-4cf1-bdb4-82837e7350b8",
+        "lastName": "admin",
+        "firstName": "admin",
+        "address": "11, rue test",
+        "zipCode": "89000",
+        "phoneNumber": "+33600000000",
+        "email": "math.geslin@gmail.com",
+        "password": "$2b$10$/.MF8YxgDj4CU022OBtROuWBw/rW7AwxY3wtstfNd20KsprVeYKqm",
+        "isAdmin": true,
+        "active": true
+    },
+    {
+        "id": "7e7074da-6f97-4a8c-a027-bfebfa8adc65",
+        "lastName": "Uber",
+        "firstName": "Jean",
+        "address": "12, rue du grand chemin",
+        "zipCode": "11111",
+        "phoneNumber": "+33701010101",
+        "email": "mathieu.geslin@ynov.com",
+        "password": "$2b$10$.iSRxZiDb7xEpfsTaO86w.rkI9kZbr3IfJNkVkWJaBYEJev9bGhcu",
+        "isAdmin": false,
+        "active": true,
+        "freelance": {
+            "dailyTax": 375,
+            "experienceYears": 7,
+            "skills": [
+                "5aa0b1de-e327-4761-8e88-0c0858822e11", 
+                "428a0388-a112-49db-9b76-43882b4fb519", 
+                "7eac33e9-e070-48ef-8123-4219a51f5b26", 
+                "2d48563b-1105-4736-bb8d-e3169d733927"
+            ],
+            "professions": ["2e072d48-cb2b-470c-b37a-988a7c5b3866"],
+            "currentTasks": []
+        }
+    },
+    {
+        "id": "3720b06f-5676-48d4-b938-9852bc5d3793",
+        "lastName": "Chirac",
+        "firstName": "Bernadette",
+        "address": "167, avenue du grand Cormier",
+        "zipCode": "12345",
+        "phoneNumber": "+33145907812",
+        "email": "mathieu.geslin@tritons.io",
+        "password": "$2b$10$/thD9aAzVBMS2AguXR.fB.EVK9qhMPZfHcWLA4mZY.f7zhVZSxtHK",
+        "isAdmin": false,
+        "active": true,
+        "company": {
+            "socialReason": "EvilCorp",
+            "status": "EURL",
+            "siret": "123456789",
+            "headOffice": "167, avenue du grand Cormier 12345"
+        }
+    },
+    {
+        "id": "677363a4-3e9f-435f-aa80-565b92252dad",
+        "lastName": "Soulez",
+        "firstName": "Ferreol",
+        "address": "1, rue du chemin aux boeufs",
+        "zipCode": "78234",
+        "phoneNumber": "+33908070605",
+        "email": "soulez.ferreol@tritons.io",
+        "password": "$2b$10$uARzDcQcbwsvsyvPp5dGx.G7rGMBkNAbS1lCrLGkxeE3gR67mXAlu",
+        "isAdmin": false,
+        "active": true,
+        "freelance": {
+            "dailyTax": 650,
+            "experienceYears": 3,
+            "professions": ["a8d9b550-3db1-4b7d-84c5-788e73f85341", "2027e226-acc8-4a9b-81b3-f076ab9c55ab"],
+            "skills": [
+                "56682531-cb8a-4e70-b615-ba241997c1a0",
+                "428a0388-a112-49db-9b76-43882b4fb519",
+                "35862d9c-374c-4be8-ae3e-249bc0548f16",
+                "f097d47d-25f6-4930-88f8-e9e66bb7a777",
+                "2d48563b-1105-4736-bb8d-e3169d733927",
+                "1a689763-ca2d-4699-8178-caf87678aa68",
+                "f2aea714-432d-4753-ba8d-1ee665ebdc8b",
+                "758e008c-f4f2-4d78-8de7-a5061f6f2a86",
+                "834abe54-6e3e-4f0b-9917-24f377e79e91"
+            ],
+            "currentTasks": []
+        }
+    },
+    {
+        "id": "49ade999-1b68-4ee4-8c14-9c86a27f4d25",
+        "lastName": "Risitas",
+        "firstName": "Jeanne",
+        "address": "134, rue de la paix",
+        "zipCode": "90567",
+        "phoneNumber": "+33130897456",
+        "email": "risitas.jeanne@hotmail.com",
+        "password": "$2b$10$Sjx6Wo6J/04lNeKp8j1zi.NNAgSyjEhzimkleIdClOXUmFxy1Xc/O",
+        "isAdmin": false,
+        "active": true,
+        "freelance": {
+            "dailyTax": 250,
+            "experienceYears": 1,
+            "professions": ["265a10ed-26ac-4dce-ba15-62a13c14dd0f"],
+            "skills": [
+                "b0254f77-dbc7-4418-987e-a1b2b9dcab85"
+            ],
+            "currentTasks": ["d2dedda5-6f81-4feb-b5d9-251452eb9b4b"]
+        }
+    },
+    {
+        "id": "4ccf38ff-a109-4ca3-a176-46222a5a310b",
+        "lastName": "Delarme",
+        "firstName": "Hugues",
+        "address": "8, impasse des acacias",
+        "zipCode": "39475",
+        "phoneNumber": "+33309764890",
+        "email": "delarme.hughes@gmail.com",
+        "password": "$2b$10$Ra26PaRDZ6Z4IWpsMMfJceSjyZmA14IiHxxoEUvvoTrTA0E8D8idC",
+        "isAdmin": false,
+        "active": true,
+        "freelance": {
+            "dailyTax": 400,
+            "experienceYears": 4,
+            "professions": ["8a9e992b-04ab-4fb1-8722-20fef468194f"],
+            "skills": [
+                "56682531-cb8a-4e70-b615-ba241997c1a0",
+                "f097d47d-25f6-4930-88f8-e9e66bb7a777",
+                "1a689763-ca2d-4699-8178-caf87678aa68"
+            ],
+            "currentTasks": []
+        }
+    }
+]
